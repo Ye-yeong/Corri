@@ -1,4 +1,3 @@
-import { NextRequest } from 'next/server';
 import OpenAI from 'openai';
 import { z } from 'zod';
 
@@ -16,7 +15,7 @@ const AnalysisSchema = z.object({
   warnings: z.array(z.string()),
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const formData = await req.formData();
     const file = formData.get('image') as File | null;
@@ -72,25 +71,14 @@ export async function POST(req: NextRequest) {
     });
 
     const content = response.choices[0].message.content;
-    console.log('OpenAI raw response:', content);
-    
-    if (!content) {
-      throw new Error('OpenAI 응답이 비어 있습니다.');
-    }
+    if (!content) throw new Error('OpenAI 응답이 비어 있습니다.');
 
-    let parsedData;
-    try {
-      parsedData = JSON.parse(content);
-    } catch (e) {
-      console.error('JSON parse error:', e, 'Content:', content);
-      throw new Error('OpenAI가 올바른 JSON 형식을 반환하지 않았습니다.');
-    }
-
+    const parsedData = JSON.parse(content);
     const validatedData = AnalysisSchema.parse(parsedData);
 
     return Response.json(validatedData);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Analysis error:', error);
-    return Response.json({ error: '분석 중 오류가 발생했습니다.' }, { status: 500 });
+    return Response.json({ error: error.message || '분석 중 오류가 발생했습니다.' }, { status: 500 });
   }
 }
