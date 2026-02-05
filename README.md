@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Corri - AI 생물 분석기 MVP
 
-## Getting Started
+Next.js 14+ (App Router), TypeScript, Tailwind CSS, OpenAI API를 사용한 AI 생물 분석 서비스입니다.
 
-First, run the development server:
+## 🚀 시작하기
 
+### 1. 설치
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 환경 변수 설정
+`.env.local` 파일을 생성하고 OpenAI API 키를 입력하세요.
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 실행
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 배포 (Vercel)
+1. GitHub 저장소에 코드를 푸시합니다.
+2. Vercel에서 프로젝트를 연결합니다.
+3. Environment Variables에 `OPENAI_API_KEY`를 추가합니다.
+4. Deploy 버튼을 누릅니다.
 
-## Learn More
+## 📱 PWA 설치 방법
 
-To learn more about Next.js, take a look at the following resources:
+### iOS
+1. Safari에서 웹사이트에 접속합니다.
+2. 하단 '공유' 아이콘을 누릅니다.
+3. '홈 화면에 추가'를 선택합니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Android
+1. Chrome에서 웹사이트에 접속합니다.
+2. 우측 상단 메뉴(점 3개)를 누릅니다.
+3. '앱 설치' 또는 '홈 화면에 추가'를 선택합니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 UI/UX 특징
+- **스카이 블루 그라데이션**: 맑고 깨끗한 자연의 느낌
+- **글래스모피즘 카드**: 현대적이고 세련된 모바일 UI
+- **직관적인 3단계 플로우**: 홈 -> 분석 중 -> 결과 확인
