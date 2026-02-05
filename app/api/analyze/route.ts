@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next';
+import { NextRequest } from 'next/server';
 import OpenAI from 'openai';
 import { z } from 'zod';
 
@@ -23,11 +23,11 @@ export async function POST(req: NextRequest) {
     const hint = formData.get('hint') as string | null;
 
     if (!file) {
-      return NextResponse.json({ error: '이미지가 없습니다.' }, { status: 400 });
+      return Response.json({ error: '이미지가 없습니다.' }, { status: 400 });
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      return NextResponse.json({ error: '파일 크기는 5MB를 초과할 수 없습니다.' }, { status: 400 });
+      return Response.json({ error: '파일 크기는 5MB를 초과할 수 없습니다.' }, { status: 400 });
     }
 
     const bytes = await file.arrayBuffer();
