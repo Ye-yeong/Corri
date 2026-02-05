@@ -6,6 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: 'Corri',
     description: '사진을 찍어 생물을 분석하는 AI 서비스',
     start_url: '/',
+    scope: '/',   
     display: 'standalone',
     background_color: '#BFE3FF',
     theme_color: '#3C86B8',
